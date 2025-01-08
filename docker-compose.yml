@@ -9,7 +9,7 @@ services:
       - mysql_db
 
   mysql_db:
-    image: mysql:8
+    image: mysql:7.5
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: flask_db
