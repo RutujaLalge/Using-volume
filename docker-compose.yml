@@ -8,10 +8,12 @@ services:
     depends_on:
       - mysql_db
     environment:
-      - MYSQL_HOST=mysql_db  # This should match the mysql_db service name
+      - MYSQL_HOST=mysql_db
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
       - MYSQL_DB=flask_db
+    networks:
+      - flask-network
 
   mysql_db:
     image: mysql:latest
@@ -20,7 +22,9 @@ services:
       MYSQL_DATABASE: flask_db
     ports:
       - "3306:3306"
+    networks:
+      - flask-network
 
 networks:
-  default:
+  flask-network:
     driver: bridge
